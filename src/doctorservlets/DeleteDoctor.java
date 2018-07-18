@@ -50,9 +50,9 @@ public class DeleteDoctor extends HttpServlet {
 			doctorDAO.deleteDoctor(new Doctor(doc_id));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
-		
 		response.sendRedirect("ViewDoctors");
 	}
 

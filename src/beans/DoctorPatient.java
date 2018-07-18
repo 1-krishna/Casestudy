@@ -37,6 +37,7 @@ public class DoctorPatient {
 		this.record_no = record_no;	
 	}
 
+
 	public int getRecord_no() {
 		return record_no;
 	}

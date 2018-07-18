@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.DoctorPatient;
-import dao.DoctorDAO;
 import dao.DoctorPatientDAO;
-import dao.PatientDAO;
 
 /**
  * Servlet implementation class DeleteCRF

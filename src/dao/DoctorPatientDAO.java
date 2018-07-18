@@ -127,5 +127,22 @@ public class DoctorPatientDAO {
 		return success;
 	}
 	
+	public DoctorPatient getDoctorPatientByRecordNo(int record_no) throws SQLException{
+		DoctorPatient result = null;
+		connect();
+		String sql = "SELECT * FROM DOCTOR_PATIENT WHERE RECORD_NO=?";
+		PreparedStatement ps = jdbcConnection.prepareStatement(sql);
+		ps.setInt(1, record_no);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		if(rs.next()){
+			result = new DoctorPatient(rs.getInt("record_no"), rs.getInt("doc_id"), rs.getInt("p_id"), rs.getString("description"), rs.getDate("dt"));
+		}
+		
+		disconnect();
+		return result;
+	}
+	
 	
 }
