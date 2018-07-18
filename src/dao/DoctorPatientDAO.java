@@ -56,9 +56,8 @@ public class DoctorPatientDAO {
 			int doc_id = rs.getInt("doc_id");
 			int p_id = rs.getInt("p_id");
 			String description = rs.getString("description");
-			String prescription = rs.getString("prescription");
 			Date dt = rs.getDate("dt");
-			listDoctorPatient.add(new DoctorPatient(record_no, doc_id, p_id, description, prescription, dt));
+			listDoctorPatient.add(new DoctorPatient(record_no, doc_id, p_id, description, dt));
 		}
 
 		rs.close();
@@ -90,7 +89,7 @@ public class DoctorPatientDAO {
 	public boolean updateDoctorPatient(DoctorPatient doctorPatient) throws SQLException {
 		boolean success = false;
 
-		String sql = "UPDATE DOCTOR_PATIENT SET doc_id=?,p_id=?,description=?,prescription=? WHERE record_no=?";
+		String sql = "UPDATE DOCTOR_PATIENT SET doc_id=?,p_id=?,description=? WHERE record_no=?";
 		connect();
 
 		PreparedStatement ps = jdbcConnection.prepareStatement(sql);
@@ -98,8 +97,7 @@ public class DoctorPatientDAO {
 		ps.setInt(1, doctorPatient.getDoc_id());
 		ps.setInt(2, doctorPatient.getP_id());
 		ps.setString(3, doctorPatient.getDescription());
-		ps.setString(4, doctorPatient.getPrescription());
-		ps.setInt(5, doctorPatient.getRecord_no());
+		ps.setInt(4, doctorPatient.getRecord_no());
 
 		success = ps.executeUpdate() > 0;
 
@@ -109,6 +107,25 @@ public class DoctorPatientDAO {
 		return success;
 	}
 	
+	public boolean insertDoctorPatient(DoctorPatient doctorPatient) throws SQLException {
+		boolean success = false;
+
+		String sql = "INSERT INTO DOCTOR_PATIENT(doc_id,p_id,description) VALUES(?,?,?)";
+		connect();
+
+		PreparedStatement ps = jdbcConnection.prepareStatement(sql);
+
+		ps.setInt(1, doctorPatient.getDoc_id());
+		ps.setInt(2, doctorPatient.getP_id());
+		ps.setString(3, doctorPatient.getDescription());
+
+		success = ps.executeUpdate() > 0;
+
+		ps.close();
+		disconnect();
+
+		return success;
+	}
 	
 	
 }

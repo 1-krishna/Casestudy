@@ -54,8 +54,11 @@ public class PatientDAO {
 			int p_id = rs.getInt("p_id");
 			String p_name = rs.getString("p_name");
 			String p_mobile = rs.getString("p_mobile");
+			int p_age = rs.getInt("p_age");
+			String p_address = rs.getString("p_age");
+			String p_gender = rs.getString("p_gender");
 
-			listPatient.add(new Patient(p_id, p_name, p_mobile));
+			listPatient.add(new Patient(p_id, p_age, p_name, p_address, p_gender, p_mobile));
 		}
 
 		rs.close();
@@ -70,12 +73,16 @@ public class PatientDAO {
 		boolean success = false;
 		connect();
 		
-		String sql = "INSERT INTO PATIENT (p_name,p_mobile) VALUES (?,?)";
+		String sql = "INSERT INTO PATIENT (p_name,p_mobile,p_age,p_address,p_gender) VALUES (?,?,?,?,?)";
 		
 		PreparedStatement ps = jdbcConnection.prepareStatement(sql);
 		
 		ps.setString(1, patient.getP_name());
 		ps.setString(2, patient.getP_mobile());
+		ps.setInt(3, patient.getP_age());
+		ps.setString(4, patient.getP_address());
+		ps.setString(5, patient.getP_gender());
+		
 		
 		success = ps.executeUpdate()>0;
 		
@@ -103,14 +110,17 @@ public class PatientDAO {
 	public boolean updatePatient(Patient patient) throws SQLException {
 		boolean success = false;
 
-		String sql = "UPDATE PATIENT SET p_name=?,p_mobile=? WHERE p_id=?";
+		String sql = "UPDATE PATIENT SET p_name=?,p_mobile=?,p_age=?,p_address=?,p_gender=? WHERE p_id=?";
 		connect();
 
 		PreparedStatement ps = jdbcConnection.prepareStatement(sql);
 
 		ps.setString(1, patient.getP_name());
 		ps.setString(2, patient.getP_mobile());
-		ps.setInt(3, patient.getP_id());
+		ps.setInt(3, patient.getP_age());
+		ps.setString(4, patient.getP_address());
+		ps.setString(5, patient.getP_gender());
+		ps.setInt(6, patient.getP_id());
 
 		success = ps.executeUpdate() > 0;
 
@@ -134,8 +144,11 @@ public class PatientDAO {
 		if (resultSet.next()) {
 			String p_name = resultSet.getString("p_name");
 			String p_mobile = resultSet.getString("p_mobile");
-
-			patient = new Patient(p_id, p_name, p_mobile);
+			int p_age = resultSet.getInt("p_age");
+			String p_address = resultSet.getString("p_address");
+			String p_gender = resultSet.getString("p_gender");
+			
+			patient = new Patient(p_id, p_age, p_name, p_address, p_gender, p_mobile);
 		}
 
 		resultSet.close();

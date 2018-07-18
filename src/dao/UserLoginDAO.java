@@ -48,6 +48,7 @@ public class UserLoginDAO {
 		ResultSet rs = ps.executeQuery();
 		
 		if(rs.isBeforeFirst()){
+			rs.next();
 			if(rs.getString("password").equals(login.getPassword())){
 				success = true;
 			}

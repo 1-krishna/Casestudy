@@ -18,6 +18,11 @@ public class UserLogin {
 	public UserLogin(String username){
 		this.username = username;
 	}
+	
+	public UserLogin(String username, String password){
+		this.username = username;
+		this.password = password;
+	}
 
 
 	public String getUsername() {

@@ -67,7 +67,7 @@ public class DoctorDAO {
 	}
 	
 	
-	public boolean addPatient(Doctor doctor) throws SQLException{
+	public boolean addDoctor(Doctor doctor) throws SQLException{
 		boolean success = false;
 		connect();
 		
