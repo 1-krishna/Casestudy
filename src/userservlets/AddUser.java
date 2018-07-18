@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import authguard.Authenticate;
 import beans.UserLogin;
 import dao.UserLoginDAO;
 
@@ -46,6 +47,10 @@ public class AddUser extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		if(!Authenticate.isAdmin(request)){
+			response.sendRedirect("sessiontimeout.html");
+		}
 		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();

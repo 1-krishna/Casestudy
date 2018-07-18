@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import authguard.Authenticate;
 import beans.Doctor;
 import beans.DoctorPatient;
 import beans.Patient;
@@ -54,6 +55,10 @@ public class ViewCRF extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		if(!Authenticate.isUser(request)){
+			response.sendRedirect("sessiontimeout.html");
+		}
 		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();

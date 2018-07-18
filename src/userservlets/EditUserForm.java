@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import authguard.Authenticate;
 import beans.UserLogin;
 import dao.UserLoginDAO;
 
@@ -46,6 +47,10 @@ public class EditUserForm extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		if(!Authenticate.isAdmin(request)){
+			response.sendRedirect("sessiontimeout.html");
+		}
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
@@ -74,11 +79,11 @@ public class EditUserForm extends HttpServlet {
 		out.print("<div class='form-group'>");
 		out.print("<input type='hidden' name='username' value='"+bean.getUsername()+"'/>");
 		out.print("<label for='name1'>Name</label>");
-		out.print("<input type='text' class='form-control' value='"+bean.getName()+"' name='name' id='name1' placeholder='Name'/>");
+		out.print("<input type='text' required='required' class='form-control' value='"+bean.getName()+"' name='name' id='name1' placeholder='Name'/>");
 		out.print("</div>");
 		out.print("<div class='form-group'>");
 		out.print("<label for='password1'>Password</label>");
-		out.print("<input type='password' class='form-control' value='"+bean.getPassword()+"'  name='password' id='password1' placeholder='Password'/>");
+		out.print("<input type='password' required='required' class='form-control' value='"+bean.getPassword()+"'  name='password' id='password1' placeholder='Password'/>");
 		out.print("</div>  ");
 		out.print("<button type='submit' class='btn btn-primary'>Update</button>");
 		out.print("</form>");

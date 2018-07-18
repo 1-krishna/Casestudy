@@ -28,7 +28,7 @@ td[rowspan] {
 <title>Patient Report Form</title>
 </head>
 <body> -->
-	<button onclick="window.print();" id="printPageButton">Print</button>
+	
 	<center>
 		<u><h1><b>DISTRICT HOSPITAL</b></h1></u>
 		<p>Muradnagar, Ghaziabad 201206</p>
@@ -76,7 +76,7 @@ td[rowspan] {
 			
 		</table>
 		</div>
-		
+		<button onclick="window.print();" id="printPageButton">Print</button>
 	</center>
 </body>
 </html>

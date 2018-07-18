@@ -62,7 +62,7 @@ public class AdminLoginServlet extends HttpServlet {
     	request.getRequestDispatcher("navadmin.html").include(request, response);
 		
 		try {
-			out.println("<h2 style='text-align:center'>Welcome<b> Mr. "+adminLoginDAO.showByusername(username).getName()+"</b></h2>");
+			out.println("<h2 style='text-align:center'>Welcome<b>"+adminLoginDAO.showByusername(username).getName()+"</b></h2>");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

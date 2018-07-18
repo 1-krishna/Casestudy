@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import authguard.Authenticate;
 import beans.Doctor;
 import dao.DoctorDAO;
 
@@ -45,6 +46,10 @@ public class AddDoctor extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if(!Authenticate.isAdmin(request)){
+			response.sendRedirect("sessiontimeout.html");
+		}
 		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();

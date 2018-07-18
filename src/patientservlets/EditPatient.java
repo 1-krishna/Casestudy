@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import authguard.Authenticate;
 import beans.Patient;
 import dao.PatientDAO;
 
@@ -42,6 +43,11 @@ public class EditPatient extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if(!Authenticate.isUser(request)){
+			response.sendRedirect("sessiontimeout.html");
+		}
+		
 		int p_id = Integer.parseInt(request.getParameter("p_id"));
 		String p_name = request.getParameter("p_name");
 		String p_mobile = request.getParameter("p_mobile");

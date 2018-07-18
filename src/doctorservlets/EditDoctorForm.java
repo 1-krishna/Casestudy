@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import authguard.Authenticate;
 import beans.Doctor;
 import dao.DoctorDAO;
 
@@ -44,6 +45,11 @@ public class EditDoctorForm extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if(!Authenticate.isAdmin(request)){
+			response.sendRedirect("sessiontimeout.html");
+		}
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
@@ -72,15 +78,15 @@ public class EditDoctorForm extends HttpServlet {
 		out.print("<div class='form-group'>");
 		out.print("<input type='hidden' name='doc_id' value='"+bean.getDoc_id()+"'/>");
 		out.print("<label for='name1'>Name</label>");
-		out.print("<input type='text' class='form-control' value='"+bean.getDoc_name()+"' name='doc_name' id='name1' placeholder='Name'/>");
+		out.print("<input type='text' required='required' class='form-control' value='"+bean.getDoc_name()+"' name='doc_name' id='name1' placeholder='Name'/>");
 		out.print("</div>");
 		out.print("<div class='form-group'>");
 		out.print("<label for='password1'>Mobile</label>");
-		out.print("<input type='number' class='form-control' value='"+bean.getDoc_mobile()+"'  name='doc_mobile' id='password1' placeholder='Mobile'/>");
+		out.print("<input type='number' required='required' class='form-control' value='"+bean.getDoc_mobile()+"'  name='doc_mobile' id='password1' placeholder='Mobile'/>");
 		out.print("</div> ");
 		out.print("<div class='form-group'>");
 		out.print("<label for='specialization1'>Specialization</label>");
-		out.print("<input type='text' class='form-control' value='"+bean.getDoc_specialization()+"'  name='doc_specialization' id='specialization1' placeholder='Specialization'/>");
+		out.print("<input type='text' required='required' class='form-control' value='"+bean.getDoc_specialization()+"'  name='doc_specialization' id='specialization1' placeholder='Specialization'/>");
 		out.print("</div>  ");
 		out.print("<button type='submit' class='btn btn-primary'>Update</button>");
 		out.print("</form>");

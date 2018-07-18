@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import authguard.Authenticate;
 import beans.Doctor;
 import beans.DoctorPatient;
 import beans.Patient;
@@ -52,6 +53,10 @@ public class AddCRF extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		if(!Authenticate.isUser(request)){
+			response.sendRedirect("sessiontimeout.html");
+		}
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
@@ -80,7 +85,7 @@ public class AddCRF extends HttpServlet {
 			e.printStackTrace();
 		}
 		out.println("<form action='AddCRF' method='post' style='width: 300px'><div class='form-group'><label for='docsel'>"
-				+"Select Doctor</label><select name='doc_id' class='form-control' id='docsel'>");
+				+"Select Doctor</label><select name='doc_id' class='form-control' id='docsel' >");
 		for(Doctor doc : docList){
 			out.println("<option value='"+doc.getDoc_id()+"'>" + doc.getDoc_id() + " | "+ doc.getDoc_name() + " ("+ doc.getDoc_specialization() +")" +"</option>");
 		}
@@ -108,6 +113,10 @@ public class AddCRF extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if(!Authenticate.isUser(request)){
+			response.sendRedirect("sessiontimeout.html");
+		}
 		
 		int doc_id = Integer.parseInt(request.getParameter("doc_id"));
 		int p_id = Integer.parseInt(request.getParameter("p_id"));

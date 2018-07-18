@@ -21,4 +21,9 @@
     <param-name>jdbcPassword</param-name>
     <param-value>KRISHNA</param-value>
   </context-param>
+  <error-page>
+    <exception-type>java.lang.Exception</exception-type>
+    <location>/Error.jsp</location>
+  </error-page>
+  
 </web-app>

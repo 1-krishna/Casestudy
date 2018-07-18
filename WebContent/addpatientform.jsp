@@ -40,7 +40,7 @@
 	
 	<div class="form-group">
 		<label for="name1">Name</label> <input type="text"
-			class="form-control" name="p_name" id="name1" value="<c:out value='${patient.p_name}' />" />
+			required="required" class="form-control" name="p_name" id="name1" value="<c:out value='${patient.p_name}' />" />
 	</div>
 	<div class="form-group">
 		<label for="email1">Mobile</label> <input type="number"
@@ -91,7 +91,7 @@
 <form action="AddPatient" method="post" style="width: 300px">
 	<div class="form-group">
 		<label for="name1">Name</label> <input type="text"
-			class="form-control" name="p_name" id="name1" placeholder="Name" />
+			required="required" class="form-control" name="p_name" id="name1" placeholder="Name" />
 	</div>
 	<div class="form-group">
 		<label for="email1">Mobile</label> <input type="number"

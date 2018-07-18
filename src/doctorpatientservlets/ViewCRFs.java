@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import authguard.Authenticate;
 import beans.DoctorPatient;
 import dao.DoctorDAO;
 import dao.DoctorPatientDAO;
@@ -51,6 +52,11 @@ public class ViewCRFs extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if(!Authenticate.isUser(request)){
+			response.sendRedirect("sessiontimeout.html");
+		}
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
