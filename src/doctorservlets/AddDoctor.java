@@ -51,6 +51,8 @@ public class AddDoctor extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("Add Doctor Called");
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		

@@ -49,6 +49,8 @@ public class EditUser extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("Edit User Called");
+		
 		String username=request.getParameter("username");
 		String name=request.getParameter("name");
 		String password=request.getParameter("password");

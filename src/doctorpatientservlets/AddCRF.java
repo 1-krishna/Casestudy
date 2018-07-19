@@ -57,6 +57,8 @@ public class AddCRF extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("AddCRF page Called");
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
@@ -117,7 +119,7 @@ public class AddCRF extends HttpServlet {
 		if(!Authenticate.isUser(request)){
 			response.sendRedirect("sessiontimeout.html");
 		}
-		
+		System.out.println("Form Submitted to AddCRF");
 		int doc_id = Integer.parseInt(request.getParameter("doc_id"));
 		int p_id = Integer.parseInt(request.getParameter("p_id"));
 		String description = request.getParameter("description");

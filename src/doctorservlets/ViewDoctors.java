@@ -51,6 +51,8 @@ public class ViewDoctors extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("View Doctor Called");
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		

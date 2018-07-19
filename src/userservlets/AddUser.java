@@ -52,6 +52,8 @@ public class AddUser extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("Add User Called");
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		

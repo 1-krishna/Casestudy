@@ -51,6 +51,8 @@ public class DeleteUser extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("Delete User Called");
+		
 		String username=request.getParameter("id");
 
 		try {

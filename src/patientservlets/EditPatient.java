@@ -48,6 +48,8 @@ public class EditPatient extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("Patient Edited");
+		
 		int p_id = Integer.parseInt(request.getParameter("p_id"));
 		String p_name = request.getParameter("p_name");
 		String p_mobile = request.getParameter("p_mobile");

@@ -48,6 +48,8 @@ public class AddPatient extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("Patient Added");
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		

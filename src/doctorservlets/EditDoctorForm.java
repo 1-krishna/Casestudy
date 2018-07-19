@@ -50,6 +50,8 @@ public class EditDoctorForm extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("Edit Doctor Form Called");
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		

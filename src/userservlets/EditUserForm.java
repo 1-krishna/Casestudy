@@ -51,6 +51,8 @@ public class EditUserForm extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("Edit User Form generated");
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		

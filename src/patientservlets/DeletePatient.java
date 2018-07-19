@@ -49,6 +49,8 @@ public class DeletePatient extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("Patient Deleted");
+		
 		int p_id = Integer.parseInt(request.getParameter("id"));
 		
 		try {

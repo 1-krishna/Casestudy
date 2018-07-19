@@ -25,5 +25,4 @@
     <exception-type>java.lang.Exception</exception-type>
     <location>/Error.jsp</location>
   </error-page>
-  
 </web-app>

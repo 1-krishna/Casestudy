@@ -50,6 +50,8 @@ public class EditDoctor extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("Edit Doctor Called");
+		
 		int doc_id=Integer.parseInt(request.getParameter("doc_id"));
 		String doc_name=request.getParameter("doc_name");
 		String doc_mobile=request.getParameter("doc_mobile");

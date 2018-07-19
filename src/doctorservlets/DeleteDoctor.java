@@ -50,6 +50,8 @@ public class DeleteDoctor extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("Delete Doctor Called");
+		
 		int doc_id = Integer.parseInt(request.getParameter("id"));
 		
 		try {

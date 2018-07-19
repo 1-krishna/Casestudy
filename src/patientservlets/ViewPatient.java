@@ -51,6 +51,8 @@ public class ViewPatient extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("View Patient Called");
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		

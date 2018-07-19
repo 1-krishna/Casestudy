@@ -44,6 +44,8 @@ public class AdminLoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     	
+    	
+    	
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
@@ -62,11 +64,16 @@ public class AdminLoginServlet extends HttpServlet {
     	request.getRequestDispatcher("navadmin.html").include(request, response);
 		
 		try {
-			out.println("<h2 style='text-align:center'>Welcome<b>"+adminLoginDAO.showByusername(username).getName()+"</b></h2>");
+			out.println("<h2 style='text-align:center'>Welcome <b>"+adminLoginDAO.showByusername(username).getName()+"</b></h2>");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//out.println("<button type='submit' class='btn btn-primary' onclick='GenerateExcel'>Download CRF Excel file</button>");
+		System.out.println("Admin Homepage Opened");
+		out.println("<hr><br><br><br><center>");
+		out.println("<div id='browse_app'>  <a class='btn btn-large btn-info' href='GenerateExcel'>Download CRF Excel file</a></div>");
+		out.println("</center>");
 		
 		out.println("</body></html>");
 		out.close();
@@ -98,7 +105,13 @@ public class AdminLoginServlet extends HttpServlet {
 				
 				request.getRequestDispatcher("navadmin.html").include(request, response);
 				
-				out.println("<h2 style='text-align:center'>Welcome<b> Mr. "+adminLoginDAO.showByusername(username).getName()+"</b></h2>");
+				out.println("<h2 style='text-align:center'>Welcome <b>"+adminLoginDAO.showByusername(username).getName()+"</b></h2>");
+				
+				
+				out.println("<hr><br><br><br><center>");
+				out.println("<div id='browse_app'>  <a class='btn btn-large btn-info' href='GenerateExcel'>Download CRF Excel file</a></div>");
+				out.println("</center>");
+				System.out.println("Admin Homepage Opened");
 				
 			}else{
 				request.getRequestDispatcher("navindex.html").include(request, response);

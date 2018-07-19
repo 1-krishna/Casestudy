@@ -46,6 +46,9 @@ public class UserLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("User Login Servlet Called");
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		

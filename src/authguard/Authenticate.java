@@ -14,6 +14,8 @@ public class Authenticate {
     		return true;
     	}
     	
+    	System.out.println("Invalid admin access tried");
+    	
     	return false;
 	}
 	
@@ -25,6 +27,8 @@ public class Authenticate {
     	if(isAdmin != null && isAdmin.equals("false")){
     		return true;
     	}
+    	
+    	System.out.println("Invalid user access tried");
     	
     	return false;
 	}

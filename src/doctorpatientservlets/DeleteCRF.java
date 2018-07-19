@@ -47,6 +47,8 @@ public class DeleteCRF extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("Delete CRF Called");
+		
 		int record_no = Integer.parseInt(request.getParameter("id"));
 		
 		try {

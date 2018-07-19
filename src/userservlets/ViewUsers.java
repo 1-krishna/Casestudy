@@ -52,6 +52,8 @@ public class ViewUsers extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("View Users Called");
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		

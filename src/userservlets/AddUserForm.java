@@ -37,6 +37,7 @@ public class AddUserForm extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("Add User Form generated");
 		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();

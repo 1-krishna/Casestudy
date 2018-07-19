@@ -60,6 +60,8 @@ public class ViewCRF extends HttpServlet {
 			response.sendRedirect("sessiontimeout.html");
 		}
 		
+		System.out.println("View CRF Called");
+		
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		
